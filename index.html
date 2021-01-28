@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8">
+
+</head>
+
+<body>
+<h1>Notebook</h1>
+<!--Add here all saved notes-->
+
+<button id="1" onclick="openNote(this.id)">New note 1</button>
+<button id="2" onclick="openNote(this.id)">New note 2</button>
+<button id="3" onclick="openNote(this.id)">New note 3</button>
+
+<script>
+function openNote(button_id) {
+	localStorage.setItem("noteID",button_id);
+	window.location.href="note.html";
+	console.log(button_id);
+	for (num=1;num<100;num++) {
+		//Check how many notes are saved and save this note with the correct name/number
+		if (localStorage.getItem("note"+num) == null) {
+			var btn = document.createElement("BUTTON");   // Create a <button> element
+			btn.innerHTML = "Note "+num;                   // Insert text
+			document.body.appendChild(btn);               // Append <button> to <body>
+			btn.id = num;
+		}else{
+		console.log(num);
+		}
+	}
+	
+
+}
+</script>
+</body>
+</html>

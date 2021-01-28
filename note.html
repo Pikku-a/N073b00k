@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>N073b00k - A Simple Online Notebook</title>
+</head>
+
+<body style="margin-left:3%;">
+
+<h1 style="line-height:0.5;font-family:courier new;">N073b00k</h1>
+<h2>A simple online notebook</h2>
+<textarea id="thetextarea" style="width:85%;height:300px;" type="text"></textarea>
+<br><button onclick="save_note()" style="float:right;margin-right:15%;">SAVE</button>
+
+
+<!--Main javascript-->
+<script>
+
+note_id = 1//localStorage.getItem("noteID");
+
+//Load
+var loaded = false;
+if (loaded == false) {
+	loaded = true;
+	document.getElementById("thetextarea").value = localStorage.getItem("note1");
+}
+
+//Save every 10 seconds
+setInterval(save_note,10000);
+
+//Save
+function save_note() {
+	var notetext = document.getElementById("thetextarea").value;
+	localStorage.setItem("note"+note_id,notetext);
+
+	console.log("saved");
+}
+
+</script>
+<!--Login
+<form name="login">
+Username<input type="text" name="userid"/>
+<input type="button" onclick="check(this.form)" value="Login"/>
+</form>
+<script language="javascript">
+function check(form)/*function to check userid & password*/
+{
+ /*the following code checkes whether the entered userid and password are matching*/
+ if(form.userid.value == "aapo")
+  {
+    window.open('target.html')/*opens the target page while Id & password matches*/
+  }
+ else
+ {
+   alert("Error Password or Username")/*displays error message*/
+  }
+}
+</script>
+-->
+</body>
+</html>
