@@ -12,7 +12,36 @@
 <h2>A simple online notebook</h2>
 <textarea id="thetextarea" style="width:85%;height:300px;" type="text"></textarea>
 <br><button onclick="save_note()" style="float:right;margin-right:15%;">SAVE</button>
+<br>
 
+<!--LOGIN
+<h3>Login</h3>
+<form action="get-text.php" method="post">
+  <div style="display:inline-block;">
+	<label for="name">Username:</label> <input type="text" id="name" name="username">
+  </div>
+  <div style="display:inline-block;">
+	<label for="password">Password:</label> <input type="password" id="password" name="password">
+  </div>
+  <div class="button" style="display:inline-block;">
+	  <button type="submit">OK?</button>
+	</div>
+</form>
+<!--SIGN UP
+<h3>Sign up</h3>
+<form action="add-user.php" method="post">
+  <div style="display:inline-block;">
+	<label for="name">Username:</label> <input type="text" id="name" name="username">
+  </div>
+  <div style="display:inline-block;">
+	<label for="password">Password:</label> <input type="password" id="password" name="password">
+  </div>
+  <div class="button" style="display:inline-block;">
+	  <button type="submit">OK?</button>
+	</div>
+</form>-->
+
+<br><br><hr style="width:10%;float:left;"><br><footer>© Pikku-a 2021</footer>
 
 <!--Main javascript-->
 <script>
@@ -37,26 +66,23 @@ function save_note() {
 	console.log("saved");
 }
 
-</script>
-<!--Login
-<form name="login">
-Username<input type="text" name="userid"/>
-<input type="button" onclick="check(this.form)" value="Login"/>
-</form>
-<script language="javascript">
-function check(form)/*function to check userid & password*/
-{
- /*the following code checkes whether the entered userid and password are matching*/
- if(form.userid.value == "aapo")
-  {
-    window.open('target.html')/*opens the target page while Id & password matches*/
-  }
- else
- {
-   alert("Error Password or Username")/*displays error message*/
-  }
+//Login / get text
+function login(username) {
+	if (username == "") {
+		alert("Insert an username.");
+	}
+	console.log("login function started");
+	window.addEventListener("load", function(){
+	  var xhr = new XMLHttpRequest();
+	  xhr.open('POST', "get-text.php");
+	  xhr.onload = function(){
+		document.getElementById("thetextarea").innerHTML = this.response; //?
+		console.log("success");
+	  };
+	  xhr.send();
+	});
 }
 </script>
--->
+
 </body>
 </html>
