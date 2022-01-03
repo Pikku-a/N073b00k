@@ -16,8 +16,32 @@ textarea {
   margin: 10px;
   margin-left:0px;
 }
+#column1 {
+	width:65%;
+}
+#column2 {
+	width:25%;
+}
 .row::after {
   content: "";
   clear: both;
   display: table;
+}
+
+/* RESPONSIVENESS */
+@media screen and (max-width: 700px) {
+	.column {
+		display:block;
+		width:100%;
+	}
+	#column1 {
+		width:95%;
+	}
+	#column2 {
+		width:95%;
+		margin-top:50px;
+	}
+	#column2 textarea {
+		height:200px;
+	}
 }
