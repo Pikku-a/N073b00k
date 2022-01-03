@@ -3,4 +3,6 @@
 
 Current version: v.1.1.0
 
-Coming soon: Synchronization
+Coming soon:
+- Synchronization
+- Additional textfield
