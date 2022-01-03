@@ -1,0 +1,23 @@
+body {
+	margin-left:3%;
+	margin-top:30px;
+}
+h1 {
+	line-height:0.5;
+	font-family:courier new;
+}
+textarea {
+	width:100%;
+	height:300px;
+}
+.column {
+  display: inline-block;
+  /*width: 50%;*/
+  margin: 10px;
+  margin-left:0px;
+}
+.row::after {
+  content: "";
+  clear: both;
+  display: table;
+}

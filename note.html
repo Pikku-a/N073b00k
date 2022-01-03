@@ -1,92 +1,107 @@
 <!DOCTYPE html>
 <html>
-<head>
-	<meta charset="UTF-8">
-	<meta name="viewport" content="width=device-width, initial-scale=1.0">
-	<title>N073b00k - A Simple Online Notebook</title>
-</head>
+	<head>
+		<meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		<title>N073b00k - A Simple Online Notebook</title>
+		<link rel="stylesheet" type="text/css" href="notebook-theme.css">
+	</head>
 
-<body style="margin-left:3%;">
+	<body>
+		
+		<div class="row">
+			
+			<h1>N073b00k</h1>
+			<h2>A simple online notebook</h2>
+			
+			<!--TEXTFIELD-->
+			<div class="column" style="width:60%;">
+				<textarea id="thetextarea" type="text" placeholder="Main notebook"></textarea>
+				<br><button onclick="save_note()" style="float:right;">SAVE</button>
+			</div>
+			
+			<!--TEXTFIELD2-->
+			<div class="column" style="width:30%;">
+				<textarea type="text" placeholder="Temporal notebook (it doesn't save)"></textarea>
+				<br>
+			</div>
+		
+		</div>
 
-<h1 style="line-height:0.5;font-family:courier new;">N073b00k</h1>
-<h2>A simple online notebook</h2>
-<textarea id="thetextarea" style="width:85%;height:300px;" type="text"></textarea>
-<br><button onclick="save_note()" style="float:right;margin-right:15%;">SAVE</button>
-<br>
+		<!--LOGIN
+		<h3>Use an id for synchronization.</h3>
+		<h4>Anyone with using this id can see your text.</h4>
+		<form action="login.php" method="post">
+		  <div style="display:inline-block;">
+			<label for="idd">ID:</label> <input type="text" id="idd" name="idd">
+		  </div>
+		  <div class="button" style="display:inline-block;">
+			  <button type="submit">OK?</button>
+			</div>
+		</form>-->
+		
+		<!--OLD LOGIN CODE
+		<h3>Login</h3>
+		<form action="get-text.php" method="post">
+		  <div style="display:inline-block;">
+			<label for="name">Username:</label> <input type="text" id="name" name="username">
+		  </div>
+		  <div style="display:inline-block;">
+			<label for="password">Password:</label> <input type="password" id="password" name="password">
+		  </div>
+		  <div class="button" style="display:inline-block;">
+			  <button type="submit">OK?</button>
+			</div>
+		</form>
+		<!--SIGN UP
+		<h3>Sign up</h3>
+		<form action="add-user.php" method="post">
+		  <div style="display:inline-block;">
+			<label for="name">Username:</label> <input type="text" id="name" name="username">
+		  </div>
+		  <div style="display:inline-block;">
+			<label for="password">Password:</label> <input type="password" id="password" name="password">
+		  </div>
+		  <div class="button" style="display:inline-block;">
+			  <button type="submit">OK?</button>
+			</div>
+		</form>-->
 
-<!--LOGIN-->
-<h3>Use an id for synchronization.</h3>
-<h4>Anyone with using this id can see your text.</h4>
-<form action="login.php" method="post">
-  <div style="display:inline-block;">
-	<label for="idd">ID:</label> <input type="text" id="idd" name="idd">
-  </div>
-  <div class="button" style="display:inline-block;">
-	  <button type="submit">OK?</button>
-	</div>
-</form>
-<!--
-<h3>Login</h3>
-<form action="get-text.php" method="post">
-  <div style="display:inline-block;">
-	<label for="name">Username:</label> <input type="text" id="name" name="username">
-  </div>
-  <div style="display:inline-block;">
-	<label for="password">Password:</label> <input type="password" id="password" name="password">
-  </div>
-  <div class="button" style="display:inline-block;">
-	  <button type="submit">OK?</button>
-	</div>
-</form>
-<!--SIGN UP
-<h3>Sign up</h3>
-<form action="add-user.php" method="post">
-  <div style="display:inline-block;">
-	<label for="name">Username:</label> <input type="text" id="name" name="username">
-  </div>
-  <div style="display:inline-block;">
-	<label for="password">Password:</label> <input type="password" id="password" name="password">
-  </div>
-  <div class="button" style="display:inline-block;">
-	  <button type="submit">OK?</button>
-	</div>
-</form>-->
+		<hr style="width:10%;float:left;"><br><footer>© Pikku-a 2021</footer>
 
-<br><br><hr style="width:10%;float:left;"><br><footer>© Pikku-a 2021</footer>
+		<!--MAIN JAVASCRIPT | SAVE-->
+		<script>
 
-<!--Main javascript-->
-<script>
+		note_id = 1//localStorage.getItem("noteID");
 
-note_id = 1//localStorage.getItem("noteID");
+		//Load
+		var loaded = false;
+		if (loaded == false) {
+			loaded = true;
+			document.getElementById("thetextarea").value = localStorage.getItem("note1");
+		}
 
-//Load
-var loaded = false;
-if (loaded == false) {
-	loaded = true;
-	document.getElementById("thetextarea").value = localStorage.getItem("note1");
-}
+		//Save every 5 seconds
+		setInterval(save_note,5000);
 
-//Save every 10 seconds
-setInterval(save_note,10000);
+		//Save
+		function save_note() {
+			var notetext = document.getElementById("thetextarea").value;
+			localStorage.setItem("note1",notetext);
 
-//Save
-function save_note() {
-	var notetext = document.getElementById("thetextarea").value;
-	localStorage.setItem("note1",notetext);
+			console.log("saved");
+		}
 
-	console.log("saved");
-}
+		/*/Login / get text
+		function login(username) {
+			if (username == "") {
+				alert("Insert an username.");
+			}
+			console.log("login function started");
+			document.getElementById("thetextarea").innerHTML = this.response; //?
+			console.log("success");
+		}*/
+		</script>
 
-/*/Login / get text
-function login(username) {
-	if (username == "") {
-		alert("Insert an username.");
-	}
-	console.log("login function started");
-	document.getElementById("thetextarea").innerHTML = this.response; //?
-	console.log("success");
-}*/
-</script>
-
-</body>
+	</body>
 </html>
