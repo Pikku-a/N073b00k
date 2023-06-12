@@ -43,6 +43,7 @@
 			<button onclick="style_change(5)">100% Orange juice</button>
 			<button onclick="style_change(6)">Yellow!</button>
 			<button onclick="style_change(7)">Antarctica</button>
+			<button onclick="style_change(8)">Pink~</button>
 			<button onclick="style_change(0)">No style</button>
 		</div>
 		<br><br>
@@ -86,7 +87,7 @@
 			</div>
 		</form>-->
 
-		<hr><br><footer>© Pikku-a 2022 | Version 1.4.1</footer>
+		<hr><br><footer>© Pikku-a 2022 | Version 1.4.2</footer>
 
 		<!--MAIN JAVASCRIPT | LOAD | SAVE | SETTINGS | ETC.-->
 		<script>
@@ -118,6 +119,8 @@
 				document.getElementById("themecss").href = "themes/notebook-yellow.css";
 			}else if (theme == 7) {
 				document.getElementById("themecss").href = "themes/notebook-antarctica.css";
+			}else if (theme == 8) {
+				document.getElementById("themecss").href = "themes/notebook-pink.css";
 			}
 			//Load feature set
 			var type = localStorage.getItem("featureset");
@@ -168,6 +171,8 @@
 				document.getElementById("themecss").href = "themes/notebook-yellow.css";
 			}else if (theme == 7) {
 				document.getElementById("themecss").href = "themes/notebook-antarctica.css";
+			}else if (theme == 8) {
+				document.getElementById("themecss").href = "themes/notebook-pink.css";
 			}
 			//Save
 			localStorage.setItem("theme",theme);
