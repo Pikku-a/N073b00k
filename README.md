@@ -1,6 +1,8 @@
 # N073b00k
 ## A simple online notebook
 
+*I now develop this integrated to my site for easier maintaining.*
+
 The "login.php" doesn't work yet.
 
 Coming soon:
